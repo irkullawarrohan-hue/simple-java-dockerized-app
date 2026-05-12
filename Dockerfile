@@ -1,19 +1,14 @@
-# stable official Java runtime base image
-FROM openjdk:17-jdk-alpine
+#Pulling the image for all required libraries
+FROM eclipse-temurin:17
 
-# metadata
-LABEL maintainer="your-email@example.com"
-LABEL version="1.0"
-LABEL description="A simple Java application"
-
-# working directory
+#Creating a folder in a container where app code will be stored
 WORKDIR /app
 
-# Copy source code into the container
+#copying the code from host to the container
 COPY src/Main.java /app/Main.java
 
-# Compile the Java code
+#compile the code
 RUN javac Main.java
 
-# Run the Java application when the container starts
-CMD ["java", "Main"]
+#run the app
+CMD ["java" , "Main"]
